@@ -1,0 +1,45 @@
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="S1" xml:lang="en" sap:schema-version="0">
+			<EntityContainer Name="EC1" m:IsDefaultEntityContainer="true"></EntityContainer>
+			<EntityType Name="Games">
+				<Key>
+					<PropertyRef  Name="BGG_ID"/>
+				</Key>
+				<Property Name="BGG_ID" Type="Edm.Decimal" Nullable="false"></Property>
+				<Property Name="Name" Type="Edm.String" Nullable="true" sap:label="Name"></Property>
+				<Property Name="Designer" Type="Edm.String" Nullable="true"></Property>
+			</EntityType>
+			<EntityType Name="Players">
+				<Key>
+					<PropertyRef  Name="ID"/>
+				</Key>
+				<Property Name="ID" Type="Edm.Guid" Nullable="false"></Property>
+				<Property Name="Name" Type="Edm.String" Nullable="false"></Property>
+				<Property Name="Details" Type="Edm.String" Nullable="true" sap:label=""></Property>
+			</EntityType>
+			<EntityType Name="Ratings">
+				<Key>
+					<PropertyRef  Name="RatingID"/>
+				</Key>
+				<Property Name="RatingID" Type="Edm.Guid" Nullable="false"></Property>
+				<NavigationProperty Name="Player" Relationship="S1.RatingsByPlayer" ToRole="ToPlayer_Ratings" FromRole="FromPlayer_Ratings"></NavigationProperty>
+				<NavigationProperty Name="Game" Relationship="S1.RatingsOfGames" ToRole="ToGame_Ratings" FromRole="FromGame_Ratings"/>
+				<Property Name="Rating" Type="Edm.Decimal" Nullable="false"></Property>
+				<Property Name="Date" Type="Edm.DateTime" Nullable="true"></Property>
+				<Property Name="Location" Type="Edm.String" Nullable="true"></Property>
+				
+			</EntityType>
+			<Association Name="RatingsOfGames">
+				<End Type="S1.Ratings" Role="ToGame_Ratings" Multiplicity="*"></End>
+				<End Type="S1.Games" Role="FromGame_Ratings" Multiplicity="1"></End>
+			</Association>
+			<Association Name="RatingsByPlayer">
+				<End Type="S1.Ratings" Role="ToPlayer_Ratings" Multiplicity="*"></End>
+				<End Type="S1.Players" Role="FromPlayer_Ratings" Multiplicity="1"></End>
+			</Association>
+			
+			
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

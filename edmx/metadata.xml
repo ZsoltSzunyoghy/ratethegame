@@ -1,0 +1,40 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" 
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="MYSERVICE" xml:lang="en" sap:schema-version="0">
+			<EntityType Name="Games">
+				<Key>
+					<PropertyRef  Name="BGG_ID"/>
+				</Key>
+				<Property Name="BGG_ID" Type="Edm.Decimal" Nullable="false"></Property>
+				<Property Name="Name" Type="Edm.String" Nullable="true" sap:label="Name"></Property>
+				<Property Name="Designer" Type="Edm.String" Nullable="true"></Property>
+			</EntityType>
+			<EntityType Name="Players">
+				<Key>
+					<PropertyRef  Name="Name"/>
+				</Key>
+				<Property Name="Name" Type="Edm.String" Nullable="false"></Property>
+				<Property Name="Details" Type="Edm.String" Nullable="true" sap:label=""></Property>
+			</EntityType>
+			<EntityType Name="Ratings">
+				<Key>
+					<PropertyRef  Name="RatingID"/>
+				</Key>
+				<Property Name="RatingID" Type="Edm.Guid" Nullable="false"></Property>
+				<NavigationProperty Name="Player" Relationship="S1.RatingsByPlayer" ToRole="ToPlayer_Ratings" FromRole="FromPlayer_Ratings"></NavigationProperty>
+				<NavigationProperty Name="Game" Relationship="S1.RatingsOfGames" ToRole="ToGame_Ratings" FromRole="FromGame_Ratings"/>
+				<Property Name="Rating" Type="Edm.Decimal" Nullable="false"></Property>
+				<Property Name="Date" Type="Edm.DateTime" Nullable="true"></Property>
+				<Property Name="Location" Type="Edm.String" Nullable="true"></Property>
+				
+			</EntityType>
+			<EntityContainer Name="MYSERVICE_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+				<EntitySet Name="Games" EntityType="MYSERVICE.Games" sap:updatable="false" sap:deletable="false" sap:content-version="2"/>
+				<EntitySet Name="Players" EntityType="MYSERVICE.Players" sap:updatable="false" sap:deletable="false" sap:content-version="2"/>
+				<EntitySet Name="Ratings" EntityType="MYSERVICE.Ratings" sap:updatable="false" sap:deletable="false" sap:content-version="2"/>
+			</EntityContainer>
+			
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
