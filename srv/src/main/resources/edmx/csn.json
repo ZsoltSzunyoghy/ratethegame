@@ -1,0 +1,70 @@
+{
+  "definitions": {
+    "CatalogService": {
+      "kind": "service",
+      "@source": "srv/my-service.cds"
+    },
+    "CatalogService.Products": {
+      "kind": "entity",
+      "source": "my.app.Games",
+      "elements": {
+        "BGG_ID": {
+          "origin": "my.app.Games..BGG_ID",
+          "indexNo": 1,
+          "value": {
+            "=": "Games.BGG_ID"
+          },
+          "key": true,
+          "type": "cds.Integer",
+          "@cds.persistence.name": "BGG_ID"
+        },
+        "name": {
+          "origin": "my.app.Games..name",
+          "indexNo": 2,
+          "value": {
+            "=": "Games.name"
+          },
+          "type": "cds.String",
+          "@cds.persistence.name": "NAME"
+        },
+        "designer": {
+          "origin": "my.app.Games..designer",
+          "indexNo": 3,
+          "value": {
+            "=": "Games.designer"
+          },
+          "type": "cds.String",
+          "@cds.persistence.name": "DESIGNER"
+        }
+      },
+      "@cds.persistence.name": "CATALOGSERVICE_PRODUCTS"
+    },
+    "my.app.Games": {
+      "kind": "entity",
+      "elements": {
+        "BGG_ID": {
+          "key": true,
+          "indexNo": 1,
+          "type": "cds.Integer",
+          "@cds.persistence.name": "BGG_ID"
+        },
+        "name": {
+          "indexNo": 2,
+          "type": "cds.String",
+          "@cds.persistence.name": "NAME"
+        },
+        "designer": {
+          "indexNo": 3,
+          "type": "cds.String",
+          "@cds.persistence.name": "DESIGNER"
+        }
+      },
+      "@cds.persistence.name": "MY_APP_GAMES"
+    }
+  },
+  "version": {
+    "creator": "CDS Compiler v1.1.3",
+    "csn": "0.1.0"
+  },
+  "@sql_mapping": "plain"
+}

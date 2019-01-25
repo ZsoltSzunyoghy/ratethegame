@@ -1,8 +1,5 @@
-using my.bookshop from '../db/data-model';
+using my.app from '../db/data-model';
 
 service CatalogService {
-  entity BookInfo {
-    key ID : Integer;
-    copiesSold: Integer;
-  }
+	entity Products as projection on app.Games;
 }

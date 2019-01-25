@@ -1,7 +1,7 @@
-namespace my.bookshop;
+namespace my.app;
 
-entity Books {
-  key ID : Integer;
-  title  : String;
-  stock  : Integer;
+entity Games {
+  key BGG_ID : Integer;
+  name  : String;
+  designer  : String;
 }
