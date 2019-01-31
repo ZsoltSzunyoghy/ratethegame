@@ -1,0 +1,23 @@
+// 20190130165322
+// https://raw.githubusercontent.com/SAPDocuments/Tutorials/master/tutorials/odata-07-explore-generated-odata-service/csv/Data.hdbtabledata
+
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "MY_APP_GAMES",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "Games.csv",
+        "has_header": true
+      },
+      "import_settings": {
+        "import_columns": [
+          "BGG_ID",
+          "NAME",
+          "DESIGNER"
+        ]
+      }
+    }
+  ]
+}

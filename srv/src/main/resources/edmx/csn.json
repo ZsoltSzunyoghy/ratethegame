@@ -4,7 +4,7 @@
       "kind": "service",
       "@source": "srv/my-service.cds"
     },
-    "CatalogService.Products": {
+    "CatalogService.Games": {
       "kind": "entity",
       "source": "my.app.Games",
       "elements": {
@@ -37,7 +37,7 @@
           "@cds.persistence.name": "DESIGNER"
         }
       },
-      "@cds.persistence.name": "CATALOGSERVICE_PRODUCTS"
+      "@cds.persistence.name": "CATALOGSERVICE_GAMES"
     },
     "my.app.Games": {
       "kind": "entity",

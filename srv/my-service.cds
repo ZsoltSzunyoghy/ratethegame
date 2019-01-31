@@ -1,5 +1,5 @@
 using my.app from '../db/data-model';
 
 service CatalogService {
-	entity Products as projection on app.Games;
+	entity Games as projection on app.Games;
 }
