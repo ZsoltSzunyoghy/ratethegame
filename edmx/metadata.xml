@@ -22,8 +22,8 @@
 					<PropertyRef  Name="RatingID"/>
 				</Key>
 				<Property Name="RatingID" Type="Edm.Guid" Nullable="false"></Property>
-				<NavigationProperty Name="Player" Relationship="S1.RatingsByPlayer" ToRole="ToPlayer_Ratings" FromRole="FromPlayer_Ratings"></NavigationProperty>
-				<NavigationProperty Name="Game" Relationship="S1.RatingsOfGames" ToRole="ToGame_Ratings" FromRole="FromGame_Ratings"/>
+				<NavigationProperty Name="Player" Relationship="MYSERVICE.RatingsByPlayer" ToRole="ToPlayer_Ratings" FromRole="FromPlayer_Ratings"></NavigationProperty>
+				<NavigationProperty Name="Game" Relationship="MYSERVICE.RatingsOfGames" ToRole="ToGame_Ratings" FromRole="FromGame_Ratings"/>
 				<Property Name="Rating" Type="Edm.Decimal" Nullable="false"></Property>
 				<Property Name="Date" Type="Edm.DateTime" Nullable="true"></Property>
 				<Property Name="Location" Type="Edm.String" Nullable="true"></Property>
@@ -34,6 +34,14 @@
 				<EntitySet Name="Players" EntityType="MYSERVICE.Players" sap:updatable="false" sap:deletable="false" sap:content-version="2"/>
 				<EntitySet Name="Ratings" EntityType="MYSERVICE.Ratings" sap:updatable="false" sap:deletable="false" sap:content-version="2"/>
 			</EntityContainer>
+			<Association Name="RatingsOfGames">
+				<End Type="MYSERVICE.Ratings" Role="ToGame_Ratings" Multiplicity="*"></End>
+				<End Type="MYSERVICE.Games" Role="FromGame_Ratings" Multiplicity="1"></End>
+			</Association>
+			<Association Name="RatingsByPlayer">
+				<End Type="MYSERVICE.Ratings" Role="ToPlayer_Ratings" Multiplicity="*"></End>
+				<End Type="MYSERVICE.Players" Role="FromPlayer_Ratings" Multiplicity="1"></End>
+			</Association>
 			
 		</Schema>
 	</edmx:DataServices>
